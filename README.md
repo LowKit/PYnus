@@ -3,4 +3,4 @@ Vulnus on Python
 
 This doesnt work lmao
 needs ursina 
-songs must be .wav or .ogg
+,songs must be .wav or .ogg
