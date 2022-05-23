@@ -2,12 +2,10 @@ from interpreter import mapdata
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 app = Ursina()
-#settings
+#settings----------------------------------------------------------------
 aproachtime=1 #time for notes to reach grid
 aproachdistance=35 #distance that notes spawn
 cameramode=1 #1-spin,2-full lock
-
-
 if cameramode==1:
     player = FirstPersonController()
     player.speed = 0
@@ -16,9 +14,8 @@ if cameramode==1:
     print("settings = [camera]=spin,[aproachtime]=",aproachtime,",[aproachdistance]=",aproachdistance)
 else:
     print("settings = [camera]=Full Lock,[aproachtime]=",aproachtime,",[aproachdistance]=",aproachdistance)
+#Scene------------------------------------------------------------------------------------------------------
 Sky()
-a = Audio('tasrppp', pitch=1, loop=True, autoplay=False)
-#Scene
 ground=Entity(model="plane",
               visible=True,
               texture="grass",
@@ -55,10 +52,8 @@ cursorgame = Entity(model="cube",
                     position=(0,0,0.05),
                     scale=(0.525, 0.525, 0))
 #-------------------------------------
-note = Entity(model="Squircle",
-               collider="mesh",
-               position=(1,1,0),
-               scale=(0.5,0.5,0.5))
+#game?--------------------------------------------------------------------------------------------
+a = Audio('tasrppp', pitch=1, loop=True, autoplay=False)
 a.play()
 def update():
     cursorgame.position=(mouse.world_point)
@@ -66,7 +61,7 @@ def update():
     print("songtime",a.time)
     noteamount = len(data)
     for i in range(noteamount):
-        songtime =a.time
+        songtime =a.time # cant get same values as _time so it doesnt spawn notes i think
         time = data[i]["_time"]
         x = data[i]["_x"]
         y = data[i]["_y"]
